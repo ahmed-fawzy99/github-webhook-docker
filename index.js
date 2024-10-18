@@ -32,10 +32,7 @@ app.post('/', (req, res) => {
   const event = req.headers['x-github-event'];
 
   if (event === 'push') {
-    const commits = req.body.commits;
-    const repository = req.body.repository.name;
 
-    // Execute shell script
     const { exec } = require('child_process');
     console.log('Executing webhook script');
     exec('sh ' + process.env.GITHUB_WEBHOOK_SCRIPT_PATH,
